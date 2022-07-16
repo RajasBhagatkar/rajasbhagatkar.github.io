@@ -1,0 +1,39 @@
+/* div{
+    margin: 20px;
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+    background-color: rgb(29, 218, 192);
+
+} */
+*{
+    margin: 0;
+}
+body{
+    width: 100%;
+    height: 100vh;
+     background-image: linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,0.75)),url(background.jpg);
+    background-size: cover;
+    background-position: center;
+    position:relative;
+}
+
+span{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    background-color: transparent;
+    color: white;
+    /* margin: 20px; */
+    padding: 20px;
+    border-radius: 30px;
+    white-space: pre;
+}
+div iframe{
+    position: absolute;
+    bottom: 10%;
+    right: 5%;
+
+    
+}
