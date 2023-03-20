@@ -1,0 +1,54 @@
+---
+layout: main.html
+tagline: Born to create & share.
+image: /images/home-opt.jpg
+---
+
+
+<!-- <p>Zeno Rocha is the Chief Product Officer at Liferay Cloud, a newly created <a href="https://liferay.com">Liferay, Inc</a> division. He is responsible for crafting the product strategy, shaping the features, and defining the future of <a href="https://www.liferay.com/products/dxp-cloud">DXP Cloud</a>.</p> -->
+
+<!-- <p>His lifelong appreciation for <a href="/projects/">building software</a> and <a href="/articles/">sharing knowledge</a>  Now he is focused on bringing the cloud revolution to the enterprise market.</p> -->
+<P>Rajas is student of Techology he is interested in the new emmergin techonogies such 
+  Web , Automation, ML, Cloud etc, which leads him to create <a href="/projects">projects</a> to get the better understanding of the techonogie stacks
+
+</P>
+
+<p>When he's not working, he likes running, watching movies, and eating chips. </p>
+
+<h1>Recent Articles</h1>
+
+<ul class="article-list">
+  {{#each collections.homeArticles}}
+    {{#unless skip }}
+      <li class="article-item">
+        <a class="article-link" href="/{{ path }}/">
+          <span class="article-title">{{ title }}</span>
+          <span class="article-date">{{ date }}</span>
+        </a>
+      </li>
+    {{/unless}}
+  {{/each}}
+</ul>
+
+<h1>Latest Projects</h1>
+
+<ul class="article-list">
+  <li class="article-item">
+    <a class="article-link" href="https://github.com/rajasbhagatkar/telegram-bot">
+      <span class="article-title">Telegram-Bot</span>
+      <span class="article-date">Jan 23, 2022</span>
+    </a>
+  </li>
+  <li class="article-item">
+    <a class="article-link" href="https://github.com/rajasbhagatkar/monsterApi">
+      <span class="article-title">MonsterImage API React</span>
+      <span class="article-date">Marh 10, 2022</span>
+    </a>
+  </li>
+  <li class="article-item">
+    <a class="article-link" href="https://github.com/rajasbhagatkar/curd-message-">
+      <span class="article-title">Basic CURD Message</span>
+      <span class="article-date">Feb 20, 2022</span>
+    </a>
+  </li>
+</ul>
