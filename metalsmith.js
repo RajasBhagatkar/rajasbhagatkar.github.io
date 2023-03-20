@@ -52,7 +52,7 @@ const buildCompleted = () => {
     ghpages.publish(config.destination, {
       branch: 'gh-pages',
       // repo: 'git@github.com:zenorocha/zenorocha.com.git'
-      repo: 'https://github.com/Cheerio-mark-1/Cheerio-mark-1.github.io.git'
+      repo: 'https://github.com/RajasBhagatkar/RajasBhagatkar.github.io.git'
     }, (err) => {
       if (err) console.log(err);
       else buildDuration();
