@@ -36,23 +36,26 @@ module.exports = {
             limit: 3
         }
     },
-    permalinks: {  // it makes the other webite links visible instead of blocking them
+    permalinks: {  // these are paramlinks static links which are easier to remeber 
+        // The pattern can contain a reference to any piece of metadata associated with the file by using the :PROPERTY syntax for placeholders.
+        // this will replace the file name with slug metadata assocciated with the file
+        // if not metadata as in this case :slug is present then original default file_name can be seen
         linksets: [{
             pattern: ":slug",
             match: {
-                collections: "blogs"
+                collection: "blogs"
             }
         }]
     },
-    // filemetadata: [
-    //     {
-    //         pattern: "blogs/*.md",
-    //         metadata: {
-    //             collections: "blogs",
-    //             layouts: "blogs.html"
-    //         }
-    //     }
-    // ],
+    filemetadata: [
+        {
+            pattern: "blogs/*.md",
+            metadata: {
+                collection: "blogs",
+                layout: "blogs.html"
+            }
+        }
+    ],
     //? metalsmith server config
     serve: {
         port: 8000,
