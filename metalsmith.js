@@ -21,13 +21,12 @@ metalsmith
     .use(plugins.collections(config.collections))
     .use(plugins.assets(config.assets))
     .use(plugins.filemetadata(config.filemetadata))
-    .use(plugins.markdown())
-    .use(plugins.metallic()) // what does this do
-    .use(plugins.permalinks(config.permalinks)) // this makes other links visiable and blocks others
+    .use(plugins.slug()) // this will remove date from the params and use slug instead 2023-08-02-fileTopicName => fileTopicName
     .use(plugins.dateInFilename()) // get date from file name by package metalsmith-date-in-filename
     .use(plugins.dateFormatter(config.dateFormatter)) // after getting date from date-in-filename format that date with dateFormtatter package
-    // .use(plugins.slug()) // this will remove date from the params and use slug instead 2023-08-02-fileTopicName => fileTopicName
-
+    .use(plugins.metallic()) // for code snippets rendering it detects the langugae and renders with proper styling
+    .use(plugins.markdown())
+    .use(plugins.permalinks(config.permalinks)) // this makes other links visiable and blocks others
     .use(plugins.layouts(config.layouts))
     .use(plugins.inPlace(config.inPlace))
 

@@ -10,25 +10,40 @@ image: /images/home-opt.jpg
 
 <p>When he's not working, he like running, watching movies, and trecking and exploring the domain of web. For this last can be viewed on <a href="https://codepen.io/DevilDesk">Codepen</a> and on <a href="https://github.com/rajasbhagatkar">Github</a>.</p>
 
+<h1>Recent Articles</h1>
+
+<ul class="article-list">
+  {{#each collections.homeBlogs}}
+    {{#unless skip }}
+      <li class="article-item">
+        <a class="article-link" href="/{{ path }}/">
+          <span class="article-title">{{ title }}</span>
+          <span class="article-date">{{ date }}</span>
+        </a>
+      </li>
+    {{/unless}}
+  {{/each}}
+</ul>
+
 <h1>Latest Projects</h1>
 
 <ul class="article-list">
   <li class="article-item">
-    <a class="article-link" href="https://bytetalkpodcast.com">
-      <span class="article-title">ByteTalk</span>
-      <span class="article-date">May 11, 2021</span>
+    <a class="article-link" href="https://plotmarket.in">
+      <span class="article-title">Plot Market</span>
+      <span class="article-date">Jun 14, 2023</span>
     </a>
   </li>
   <li class="article-item">
-    <a class="article-link" href="https://draculatheme.com/ui">
-      <span class="article-title">Dracula UI</span>
-      <span class="article-date">April 14, 2021</span>
+    <a class="article-link" href="https://github.com">
+      <span class="article-title">bitTorrent Client</span>
+      <span class="article-date">April 29, 2023</span>
     </a>
   </li>
   <li class="article-item">
-    <a class="article-link" href="https://14habits.com">
-      <span class="article-title">14 Habits of Highly Productive Developers</span>
-      <span class="article-date">July 14, 2020</span>
+    <a class="article-link" href="https://tuedo.com">
+      <span class="article-title">Tuedo.com</span>
+      <span class="article-date">Spe 26, 2022</span>
     </a>
   </li>
 </ul>

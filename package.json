@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/RajasBhagatkar/RajasBhagatkar.github.io#readme",
   "dependencies": {
-        "chalk": "^1.0.0",
+    "chalk": "^1.0.0",
     "gh-pages": "^1.1.0",
     "handlebars": "^4.0.5",
     "load-metalsmith-plugins": "^0.1.1",
