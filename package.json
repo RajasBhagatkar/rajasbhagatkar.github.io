@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "watch": "node metalsmith watch"
+    "watch": "node metalsmith watch",
+    "deploy": "node metalsmith deploy",
+    "start": "node metalsmith build"
   },
   "repository": {
     "type": "git",

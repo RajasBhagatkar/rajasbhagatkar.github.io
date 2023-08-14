@@ -1,0 +1,241 @@
+---
+layout: blogs.html
+title: Generate language code
+slug: generate-html-language-code
+---
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Code</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <link rel='stylesheet'
+        href='https://fonts.googleapis.com/css?family=Catamaran:400,100,200,300,500,600,700,800,900|Material+Icons'>
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+    <!------ Include the above in your HEAD tag ---------->
+</head>
+<style>
+    .select2-container .select2-selection--single {
+        height: 34px !important;
+    }
+
+    .select2-container--default .select2-selection--single {
+        border: 1px solid #ccc !important;
+        border-radius: 0px !important;
+    }
+
+    .copy-text {
+        margin-top: 2rem;
+        border: 3px solid gray;
+        border-style: dashed;
+        align-items: start;
+        font-family: 'Fira Code', monospace;
+    }
+</style>
+
+<body>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+
+    <!-- <div class="container"> -->
+
+    <div class="container">
+        <form action="#" class="iso_lang_form">
+            <p class="text-danger">Please Refresh the page, script might not load on some devices</p>
+            <div class="row">
+                <div class="col-sm-4">
+                    <label for="language">Language</label>
+                    <select class="form-control select2" id="language" name="language">
+                        <option>Select</option>
+                    </select>
+                </div>
+                <div class="col-sm-4">
+                    <label for="country">Country</label>
+                    <select class="form-control select2" name="country" id="country">
+                        <option>Select</option>
+                    </select>
+                </div>
+                <div class="col-sm-4 mt-5">
+                    <button class="btn btn-primary ">Generate</button>
+                </div>
+            </div>
+        </form>
+        <div>
+            <!-- <span class="answer"></span> -->
+            <main>
+                <!-- Start DEMO HTML (Use the following code into your project)-->
+                <div class="container">
+                    <div class="wrap ">
+                        <div class="box copy-text  answer-box d-none p-3">
+                            <h5 data-copy-text="" class="answer p-2 bold"></h5>
+                        </div>
+                    </div>
+                </div>
+                <!-- END EDMO HTML (Happy Coding!)-->
+            </main>
+
+        </div>
+
+    </div>
+
+    <!-- </div> -->
+    <script>
+        $('.select2').select2();
+    </script>
+    <script>
+        // 'use strict';
+
+
+        document.addEventListener('DOMContentLoaded', async function () {
+            copyText.init()
+        });
+
+        var copyText = {
+            init: function () {
+                if (document.querySelectorAll('[data-copy-text]').length) {
+                    var cp = document.querySelectorAll('[data-copy-text]');
+
+                    for (var i = 0, l = cp.length; i < l; i++) {
+                        copyText.addCopy(cp[i]);
+                    }
+                }
+            },
+            addCopy: function (el) {
+                if (typeof el !== 'undifined') {
+                    var parent = el.parentNode;
+                    if (!parent.querySelectorAll('span.copy-btn').length && window.getSelection) {
+                        var cpBtn = document.createElement('I');
+
+                        parent.setAttribute('style', 'position:relative');
+                        parent.appendChild(cpBtn);
+
+                        cpBtn.classList.add('material-icons');
+                        cpBtn.textContent = 'content_copy';
+                        cpBtn.setAttribute('title', 'Copy Text');
+
+                        copyText.addCopyEvent(cpBtn, el);
+                    }
+                }
+            },
+            addCopyEvent: function (btn, el) {
+                var coppied = false;
+                var timer = 0;
+
+                function copyText() {
+                    function showCheckmark() {
+                        btn.textContent = 'check';
+                        btn.classList.add('active');
+                    }
+
+                    function hideCheckmark() {
+                        btn.classList.remove('active');
+                        btn.textContent = 'content_copy';
+                        timer = 0;
+                    }
+
+                    if (timer === 0) {
+                        if (window.getSelection) {
+                            var selection = window.getSelection();
+                            var range = document.createRange();
+                            range.selectNodeContents(el);
+                            selection.removeAllRanges();
+                            selection.addRange(range);
+
+                            try {
+                                document.execCommand('copy');
+                                coppied = true;
+                            } catch (err) {
+                                console.error(err);
+                            }
+
+                            selection.removeAllRanges();
+                        } else {
+                            console.error('your browser does not support copy');
+                        }
+
+                        if (coppied) {
+                            clearTimeout(timer);
+                            showCheckmark();
+                            timer = setTimeout(hideCheckmark, 2000);
+                        }
+                    }
+                }
+
+                if (typeof btn !== 'undifined' && typeof el !== 'undifined') {
+                    btn.addEventListener('click', copyText, false);
+                }
+            },
+        }
+
+
+
+
+
+        const form = document.querySelector(".iso_lang_form");
+        const countryOption = document.querySelector('#country');
+        const languageForm = document.querySelector("#language");
+        const countryForm = document.querySelector("#country");
+
+
+
+
+        window.addEventListener('load', async (e) => {
+            console.log("beforeload page is fully loaded");
+
+            // const allData = await (await fetch('./data/lang.json')).json()
+            // /assets/data/projects/generate-html-lang-code/lang.json
+            // /data/projects/lang.json
+            const allData = await (await fetch('/data/projects/lang.json')).json()
+
+            const allCountry = await (await fetch("/data/projects/country.json")).json()
+
+
+            for (let language of allData) {
+                const optionsOption = document.createElement("option")
+                optionsOption.innerText = language.lang
+                optionsOption.value = language.code_639_1
+                languageForm.insertAdjacentElement('beforeend', optionsOption)
+            }
+
+
+            for (let country of allCountry) {
+                const optionsOption = document.createElement("option")
+                optionsOption.innerText = country.country
+                optionsOption.value = country.alpha2
+                countryForm.insertAdjacentElement('beforeend', optionsOption)
+            }
+
+        })
+
+
+        const answerBox = document.querySelector('.answer-box')
+        const answerFront = document.querySelector(".answer")
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            if (e.target.language.value.toLowerCase() === "select" || e.target.country.value.toLowerCase() === "select") {
+                // answerFront.innerText = "Please Select country and language"
+                alert("Please Select country and language")
+                return 0;
+            }
+            console.log(`language - ${e.target.language.value}`);
+            console.log(`country - ${e.target.country.value}`);
+            const answer = `<html lang="${e.target.language.value}-${e.target.country.value}">`
+
+            answerFront.innerText = answer // set value
+            answerBox.classList.remove('d-none') // show hide element
+
+            console.log(`${e.target.language.value}-${e.target.country.value}`);
+
+        })
+
+
+    </script>
+
+</body>

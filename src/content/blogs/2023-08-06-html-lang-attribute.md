@@ -42,4 +42,4 @@ If you have several versions of a webpage for different regions or languages, yo
 ## Where to find the language code for the give language and region ?
 
 Well while my self trying to search for website where one can simply enter the language and country and get the ISO code of it, I found none 🤔 so as a Software Developer It's is my responsibility to create one 😅 lol. 
-if you want to get the language code for your html page visit [Generate HTML language code](https://github.com/rajasbhagatkar)
+if you want to get the language code for your html page visit [Generate HTML language code](/projects/generate-html-language-code/)
