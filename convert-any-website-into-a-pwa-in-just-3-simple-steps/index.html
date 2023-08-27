@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en-In">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Turn existing website to PWA in just 3 simple steps // Rajas Bhagatkar</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:site_name" content="Rajas Bhagatkar">
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="alternate icon" href="/favicon.ico">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/highlight.css">
+  <link rel="stylesheet" href="/css/senna.css">
+
+
+  <script src="/js/senna.min.js"></script>
+  <script src="/js/headroom.min.js"></script>
+  <script src="/js/main.js"></script>
+
+  <!-- Inspectlet -->
+
+  <!-- Google Analytics -->
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-P8NEDYNNEC"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-P8NEDYNNEC');
+  </script>
+</head>
+
+<body data-senna data-senna-surface>
+  <div class="senna-loading-bar"></div>
+
+  <header class="site-header ">
+    <a href="/" class="logo">RB</a>
+  
+    <nav class="site-nav">
+      <ul>
+        <!-- <li><a href="/articles/">Articles</a></li> -->
+        <li><a href="/blogs/">Blogs</a></li>
+        <!-- <li><a href="/talks/">Talks</a></li> -->
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/reminder/">Reminder</a></li>
+        <li><a href="/about/">About</a></li>
+      </ul>
+    </nav>
+  
+    <div class="nav-social">
+      <a href="https://twitter.com/rajasbhagatkar" target="_blank" title="Twitter">
+        <img src="/images/icon-twitter.svg" alt="Twitter">
+      </a>
+      <a href="https://instagram.com/rajasbhagatkar" target="_blank" title="Instagram">
+        <img src="/images/icon-instagram.svg" alt="Instagram">
+      </a>
+      <a href="https://github.com/rajasbhagatkar" target="_blank" title="GitHub">
+        <img src="/images/icon-github.svg" alt="GitHub">
+      </a>
+    </div>
+  </header>
+  <main class="post">
+    <header class="post-header">
+      <h1 class="post-title">Turn existing website to PWA in just 3 simple steps</h1>
+      <div class="post-image" style="background-image: url(/img/blog/turn-existing-website-to-pwa-in-1-minute-using-pwainit.png)"></div>
+      <h2 class="post-subtitle">Aug 27, 2023</h2>
+    </header>
+    <div class="post-content post-article">
+      <div class="post-container">
+
+        <h2 id="so-what-is-pwa-">So what is PWA?</h2>
+<p>PWA is <strong>prograssive web app</strong> enables websites to function more like native mobile apps in exchange for some flexibility. You get native mobile app functionality (or close to it) without all the overhead of app store approvals and tones of platform-specific native code. Users can install a progressive web app to their home screen and launch it just like a native app. However, the app is launched into a pseudo-app frame that has some restrictions and only allows access to pages that are sub-paths of the initial path of the progressive web app. They also must be served over HTTPS. It is light, fast and secure.</p>
+<h2 id="who-can-turn-thier-site-into-a-pwa-">Who can turn thier site into a PWA?</h2>
+<p>Anyone can turn their website into a PWA. From individuals like bloggers and influencers who want their users to easily access thier site, to small, medium, and large businesses. With great features like geolocation, customers see nearby stores or dirving directions.</p>
+<p>There is also the <strong>media API</strong> that accesses a device&#39;s native cameras which can be immensely helpful, quick, and cheap for instance in identifying oneself for certain services like registering on Airbnb or at the notary for certain legal services.</p>
+<h2 id="what-type-of-websites-can-be-turned-into-pwa-">What type of websites can be turned into PWA?</h2>
+<p>Something happening progressively means gradual development - in stages over time. In this case of web apps, progressive means that no matter the type of web application, it can be converted into a PWA.</p>
+<h2 id="how-to-turn-a-website-into-a-pwa">How to turn a website into a PWA</h2>
+<p>For Converting a web app into PWA you should already have a website to convert. if not, there are many tutorials available on youtube, forums, etc. There are four primary building blocks for PWAs - <strong>service workers</strong>, <strong>application manifest</strong>, <strong>background synchronization</strong>, and the <strong>web push</strong>.</p>
+<h3 id="create-files">Create files</h3>
+<p>at the base of you project create some files</p>
+<ul>
+<li>sw.js (service workers)</li>
+<li>manifest.json (application manifest)</li>
+</ul>
+<h3 id="service-workers">Service workers</h3>
+<p>Open your service worker file <strong>sw.js</strong> and input your code as it appears in the screenshot below. If you have CSS, app.js files and any other files for running your website, add them at line size in the code below, where index.html is. </p>
+<pre><code class="hljs js"><span class="hljs-comment">// On install - the application, shell cached</span>
+self.addEventListener(<span class="hljs-string">'install'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">event</span>)</span>{
+    event.waitUntil(
+        caches.open(<span class="hljs-string">'sw-cache'</span>).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">cache</span>) </span>{
+            <span class="hljs-comment">// Static Files that make up the application shell are cached</span>
+            <span class="hljs-keyword">return</span> cache.add(<span class="hljs-string">"index.html"</span>); 
+           <span class="hljs-comment">/**
+            * if you have css file and app.js files
+            * Please add here as well, to be cached! 
+            * we have added single index.html as we have a simple app 
+            * but your website may uses many include them. 
+            */</span>
+        })
+    );
+})
+
+<span class="hljs-comment">// with request network</span>
+self.addEventListener(<span class="hljs-string">"fetch"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">event</span>) </span>{
+    event.respondWith(
+        <span class="hljs-comment">// Try the cache</span>
+        caches.match(event.request).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">response</span>) </span>{
+            <span class="hljs-comment">// return it if there is a response, or else fetch again</span>
+            <span class="hljs-keyword">return</span> response || fetch(event.request);
+        })
+    );
+
+})</code></pre>
+
+<h2 id="app-manifest">App manifest</h2>
+<p>Next, create your application manifest by opening the manifest.json file you already made in the beginning Now fill the manifest.json file with the code below</p>
+<pre><code class="hljs json">{
+    "<span class="hljs-attribute">short_name</span>": <span class="hljs-value"><span class="hljs-string">"WD1"</span></span>,
+    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Wiredelta PWA"</span></span>,
+    "<span class="hljs-attribute">icons</span>": <span class="hljs-value">[
+        {
+            "<span class="hljs-attribute">src</span>": <span class="hljs-value"><span class="hljs-string">"/images/wdicon1.png"</span></span>,
+            "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"image/png"</span></span>,
+            "<span class="hljs-attribute">sizes</span>": <span class="hljs-value"><span class="hljs-string">"144x 144"</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">src</span>" : <span class="hljs-value"><span class="hljs-string">"/images/wdicon2.png"</span></span>,
+            "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"image/png"</span></span>,
+            "<span class="hljs-attribute">sizes</span>" : <span class="hljs-value"><span class="hljs-string">"144x144"</span>
+        </span>}
+    ]</span>,
+    "<span class="hljs-attribute">start_url</span>": <span class="hljs-value"><span class="hljs-string">"/index.html"</span></span>,
+    "<span class="hljs-attribute">background_color</span>": <span class="hljs-value"><span class="hljs-string">"#000000"</span></span>,
+    "<span class="hljs-attribute">display</span>": <span class="hljs-value"><span class="hljs-string">"standalone"</span></span>,
+    "<span class="hljs-attribute">theme_color</span>": <span class="hljs-value"><span class="hljs-string">"#4dbaa8"</span>
+</span>}</code></pre>
+
+<p>Add your icons into the image folder if are not already there. Please remember that the icons should be in eight different sizes ranging from 72×72 to 512×512 to cater to various devices. Note that the icon sizes shown above are just an example.</p>
+<p>After creating the manifest.json file, connect it to your web application in order to access and add the home screen functionality and icon installation. We make the connection by adding the following code in the head of the index.html.</p>
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-title">meta</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"theme-color"</span> <span class="hljs-attribute">content</span>=<span class="hljs-value">"#4dbaa8"</span> /&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">link</span> <span class="hljs-attribute">rel</span>=<span class="hljs-value">"manifest"</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"manifest.json"</span>&gt;</span></code></pre>
+
+<p>Next, we will have to place a script in the head tag just after the manifest link. This is because the PWA needs it when the page loads, and for caching files. Below is the piece of code for the script.</p>
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-title">script</span>&gt;</span><span class="actionscript">
+    <span class="hljs-comment">// if browser supports worker</span>
+    <span class="hljs-keyword">if</span>(<span class="hljs-string">"serviceWorker"</span> <span class="hljs-keyword">in</span> navigator){
+        navigator.serviceWorker.register(<span class="hljs-string">'sw.js'</span>)
+    }
+</span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span></code></pre>
+
+<p>When you finish writing the script code, your index.html file should look like below snippets</p>
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-title">meta</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"theme-color"</span> <span class="hljs-attribute">content</span>=<span class="hljs-value">"#4dbaa8"</span> /&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">link</span> <span class="hljs-attribute">rel</span>=<span class="hljs-value">"manifest"</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"manifest.json"</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-title">script</span>&gt;</span><span class="actionscript">
+    <span class="hljs-comment">// if browser supports worker</span>
+    <span class="hljs-keyword">if</span>(<span class="hljs-string">"serviceWorker"</span> <span class="hljs-keyword">in</span> navigator){
+        navigator.serviceWorker.register(<span class="hljs-string">'sw.js'</span>)
+    }
+</span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span></code></pre>
+
+<p>Congratulations, you have now learned how to turn a website into a PWA. To confirm, open your application in a web browser that supports service workers like Chrome. Your new PWA should look something like the screenshot below.</p>
+<p><img src="https://wiredelta.com/wp-content/uploads/2020/09/installwiredeltaPWA-1024x393.png" alt="pwa-browser-image-screenshot"></p>
+<h2 id="summing-up">Summing up</h2>
+<p>In a world where cross-platform development is rapidly taking over native development, Progressive Web Applications seem like the answer we have all been looking for. For those who want a PWA of their own, they are faster than native applications, easier to develop and maintain, and more affordable.</p>
+<p>Moreover, they are more enjoyable for users as well, as they live in browsers, so they are easy to find and install, and they are super lightweight, saving a lot of storage space.</p>
+<p>Not to mention that, if you follow this step-by-step guide, you will be able to turn a website into a PWA in no time. Whether you are building a new website, managing a modern platform, or a legacy system. But, if you still have questions, you can do quick google search.</p>
+<p>all your answers are just one google away!!! 😅😉🤗</p>
+<p>reference  </p>
+<ul>
+<li><a href="https://wiredelta.com/how-to-turn-a-website-into-a-pwa/">How To Turn A Website Into A PWA by mark dencker</a></li>
+<li><a href="https://dev.to/developertharun/convert-any-website-into-a-pwa-in-just-3-simple-steps-35pp">Convert any website into a PWA by Tharun Shiv</a></li>
+</ul>
+
+      </div>
+    </div>
+  </main>
+
+
+
+</body>
+</html>
