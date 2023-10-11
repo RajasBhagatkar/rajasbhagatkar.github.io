@@ -330,8 +330,8 @@ svg {
   height: 100%;
   top: 0;
   left: 0;
-  z-index: 2;
-  will-change: transform;
+  z-index: 2; 
+  /* will-change: transform; as this is giving error */
 }
 
 @media (max-width: 1024px) {
