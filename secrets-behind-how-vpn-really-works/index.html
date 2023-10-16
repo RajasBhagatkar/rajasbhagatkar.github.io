@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en-In">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Uncovering the truth: The secrets behind how VPN really works // Rajas Bhagatkar</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:site_name" content="Rajas Bhagatkar">
+  <!-- <meta name="description" content="Rajas Bhagatkar - Home" /> -->
+  <meta name="description" content="About · Blogs · Projects · Reminder · About. <b>Rajas Bhagatkar</b> · Full Stack Nodejs Developer at Golden Leaf Digital a Digital Marketing Company | (MongoDB, SQL, Express, ReactJs, Node, Java, Spring Boot) · Currently working on Plot Market a land-selling platform that aims to provide detailed information about different land projects around India and connect the normal person to developer/seller without any broker." />
+
+  <meta name="keywords" content="Rajas Bhagatkar" />
+  <meta name="author" content="Rajas Bhagatkar" />
+  <!-- <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="alternate icon" href="/favicon.ico"> -->
+  <link rel="alternate icon" href="/rajas.ico">
+
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/highlight.css">
+  <link rel="stylesheet" href="/css/senna.css">
+
+
+  <script src="/js/senna.min.js"></script>
+  <script src="/js/headroom.min.js"></script>
+  <script src="/js/main.js"></script>
+  <meta name="google-site-verification" content="jdq_teez2KZvQ5jUvxRw-ok8eBeD9cIgI7JMfaVY258" />
+  <!-- Inspectlet -->
+
+  <!-- Google Analytics -->
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-P8NEDYNNEC"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-P8NEDYNNEC');
+  </script>
+
+  <!-- is.dev analytics -->
+  <script defer data-domain="rajasbhagatkar.is-a.dev"
+  src="https://analytics.is-a.dev/js/script.js"></script>
+
+  <!-- Heap analytics useage-->
+  <script type="text/javascript">
+    window.heap=window.heap||[],heap.load=function(e,t){window.heap.appid=e,window.heap.config=t=t||{};var r=document.createElement("script");r.type="text/javascript",r.async=!0,r.src="https://cdn.heapanalytics.com/js/heap-"+e+".js";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(r,a);for(var n=function(e){return function(){heap.push([e].concat(Array.prototype.slice.call(arguments,0)))}},p=["addEventProperties","addUserProperties","clearEventProperties","identify","resetIdentity","removeEventProperty","setEventProperties","track","unsetEventProperty"],o=0;o<p.length;o++)heap[p[o]]=n(p[o])};
+    heap.load("2087469965");
+    </script>
+</head>
+
+<body data-senna data-senna-surface>
+  <div class="senna-loading-bar"></div>
+
+  <header class="site-header site-header-white">
+    <a href="/" class="logo">RB</a>
+  
+    <nav class="site-nav">
+      <ul>
+        <!-- <li><a href="/articles/">Articles</a></li> -->
+        <li><a href="/blogs/">Blogs</a></li>
+        <!-- <li><a href="/talks/">Talks</a></li> -->
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/reminder/">Reminder</a></li>
+        <li><a href="/about/">About</a></li>
+      </ul>
+    </nav>
+  
+    <div class="nav-social">
+      <a href="https://twitter.com/rajasbhagatkar" target="_blank" title="Twitter">
+        <img src="/images/icon-twitter.svg" alt="Twitter">
+      </a>
+      <a href="https://instagram.com/rajasbhagatkar" target="_blank" title="Instagram">
+        <img src="/images/icon-instagram.svg" alt="Instagram">
+      </a>
+      <a href="https://github.com/rajasbhagatkar" target="_blank" title="GitHub">
+        <img src="/images/icon-github.svg" alt="GitHub">
+      </a>
+    </div>
+  </header>
+  <main class="post">
+    <div class="post-content post-article">
+      <div class="post-container">
+          <h1 class="post-title">Uncovering the truth: The secrets behind how VPN really works</h1>
+          <h2 class="post-subtitle">Oct 17, 2023</h2>
+
+        <p>VPN is often explained as this magical encrypted tunnel that &quot;protects&quot; your identity. But these description are very abstract and often sometimes misleading.</p>
+<p>I&#39;m not an expert in networking but I know enough to explain what really happens under the hood when you enable VPN. So I&#39;m going to explain what really happens under the hood when you enable a VPN. So I&#39;m going to assume I&#39;m talking to software engineers (those are my audience after all).</p>
+<p>To know how VPN works here is a simple example with an http server.</p>
+<p>Let&#39;s say you want to connect to google (e.g. IP 1.2.3.4) port 80 let us assume your source ip is 6.6.6.6. This is really your public router IP and not your private laptop or device IP so I&#39;m going to skip NAT for simplicity.</p>
+<p>Normally with no VPN, your client sends a SYN segment to port 80 that goes into IP packet with a destination IP 1.2.3.4 and source IP 6.6.6.6 and google replies back directy to you with SYN/ACK destination IP 6.6.6.6 and source IP 1.2.3.4 and this goes on. Your ISP sees the IP packet you are sending back and forth to 1.2.3.4. They can choose to deep inspect it, and see the content, they (the ISP and pretty much anyone in between) can do that in case of plaintext HTTP (port 80) but not really on HTTPS (port 443).</p>
+<p><img src="/img/blog/VPNWorking/packet-sending.webp" alt=""></p>
+<p>Now say you deploy a UDP based VPN, and you use a VPN server on IP 3.3.3.3. The client still produces the SYN IP packet with destination 1.2.3.4 and source IP 6.6.6.6 but then the VPN client captures that IP packet (which you are sending), encrypts it and put it on a new UDP datagram with VPN info and that UDP goes into a new IP packet destination 3.3.3.3 source is 6.6.6.6.</p>
+<p><img src="/img/blog/VPNWorking/encrypting-packet.webp" alt=""></p>
+<p>So your ISP see you going to 3.3.3.3 (VPN server) and not (1.2.3.4), and your ISP cannot see your search history or the specific website your visit, because that is encrypted and encapsulated in that outer ip packet vpn server recives the ip packet unpack decrypt it (complex logic must find the key etc) then sees that which guy want to go to 1.2.3.4 and creates a brand new ip packet (or reuse for zero copy) changing the source ip to its own 3.3.3.3 so that SYN reaches google.</p>
+<p><img src="/img/blog/VPNWorking/packet-sending.webp" alt=""></p>
+<p>Google replies back to 3.3.3.3 with SYN/ACK the VPN server which knows that this packet must go to you (6.6.6.6), so it creates a new IP packet with its source ip 3.3.3.3 and destination ip 6.6.6.6 and puts the SYN/ACK in it.</p>
+<p>Your ISP can track your VPN use by seeing that you&#39;re connected to a VPN server but won&#39;t konw what you are doing. 
+They&#39;ll always know the VPN&#39;s IP address but not the data packet&#39;s final destination. 
+Your ISP and in-betweens can see what and for how long you connect, but they won&#39;t konw what website you&#39;re on.
+your ISP won&#39;t be able to see what you are downloading but they can guess what activity you&#39;re doing based on the amount of bandwidth you are using. for example, streaming, torrents, downloading files, etc.</p>
+<p>So in summary the VPN does not terminate the TCP it simply passes the SYN all the way through it, so you get an end to end TCP connection between you and google through this encrypted tunnel.</p>
+<p>The same thing happen when you use TLS, the TLS(Transport Layer Security) client hello is forwarded all the way to google through the VPN just like any other packet. That is why you also get an end-to-end encryption and the VPN cannot really read HTTPS traffic as well. That means yes you take the hit of double encryption and decryption when using VPN.</p>
+<h3 id="why-udp-and-not-tcp-for-vpn-">Why UDP and not TCP for VPN?</h3>
+<p>You can but you might get TCP meltdown as the two congestion algorightm fight each other (outer and inner TCP connection). With UDP it is easy to retransmit only the lost packets and have a simpler retry logic without all the complexity of TCP.</p>
+
+      </div>
+    </div>
+  </main>
+
+
+
+</body>
+</html>
