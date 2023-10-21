@@ -116,17 +116,25 @@
       
       <div class="post-container">
         <h1 class="update-title">Get In Touch</h1>
-        <p class="update-description">My email list is the best way to follow all the work I'm doing. Sign up below.</p>
+        <!-- <p class="update-description">My email list is the best way to contact me and collaborate on the work.</p> -->
+        <p class="update-description">If you feel that there is need for imporvement feel free drop a message.</p>
       
-        <form action="#contact email location" method="post" class="form">
+        <!-- <form action="#contact email location" method="post" class="form">
             <input name="EMAIL" placeholder="Your email address" id="mce-EMAIL" type="email" required>
             <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe">
+        </form> -->
+        <form class="form">
+          <input type="text" class="email" name="name" placeholder="Name">
+          <input type="email" class="email" id="email_id" name="email" placeholder="Your email address">
+          <textarea name="message" class="message" id="message" cols="25" rows="5" placeholder="Enter Message"></textarea>
+          <button class="send_msg">Send</button>
         </form>
       </div>      <!-- updates if any present -->
     </div>
   </main>
 
 
+<script src="/js/hook.js"></script>
 
 </body>
 </html>
