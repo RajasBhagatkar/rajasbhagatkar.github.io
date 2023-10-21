@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en-In">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Whats New in Next.js 13.5 // Rajas Bhagatkar</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:site_name" content="Rajas Bhagatkar">
+  <!-- <meta name="description" content="Rajas Bhagatkar - Home" /> -->
+  <!-- <meta name="description" content="About · Blogs · Projects · Reminder · About. Rajas Bhagatkar · Full Stack Nodejs Developer at Golden Leaf Digital a Digital Marketing Company | (MongoDB, SQL, Express, ReactJs, Node, Java, Spring Boot) · Currently working on Plot Market a land-selling platform that aims to provide detailed information about different land projects around India and connect the normal person to developer/seller without any broker." /> -->
+
+  <!-- <meta name="keywords" content="Rajas Bhagatkar" /> -->
+  <meta name="author" content="Rajas Bhagatkar" />
+  <!-- <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="alternate icon" href="/favicon.ico"> -->
+  <link rel="icon" href="/Favicon.png" type="image/x-icon" />
+  <!-- <link rel="alternate icon" href="/alternateFavicon.png" type="image/x-icon" /> -->
+
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/highlight.css">
+  <link rel="stylesheet" href="/css/senna.css">
+
+
+  <script src="/js/senna.min.js"></script>
+  <script src="/js/headroom.min.js"></script>
+  <script src="/js/main.js"></script>
+  <meta name="google-site-verification" content="jdq_teez2KZvQ5jUvxRw-ok8eBeD9cIgI7JMfaVY258" />
+  <!-- Inspectlet -->
+
+  <!-- Google Analytics -->
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-P8NEDYNNEC"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-P8NEDYNNEC');
+  </script>
+
+  <!-- is.dev analytics -->
+  <script defer data-domain="rajasbhagatkar.is-a.dev"
+  src="https://analytics.is-a.dev/js/script.js"></script>
+
+  <!-- Heap analytics useage-->
+  <script type="text/javascript">
+    window.heap=window.heap||[],heap.load=function(e,t){window.heap.appid=e,window.heap.config=t=t||{};var r=document.createElement("script");r.type="text/javascript",r.async=!0,r.src="https://cdn.heapanalytics.com/js/heap-"+e+".js";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(r,a);for(var n=function(e){return function(){heap.push([e].concat(Array.prototype.slice.call(arguments,0)))}},p=["addEventProperties","addUserProperties","clearEventProperties","identify","resetIdentity","removeEventProperty","setEventProperties","track","unsetEventProperty"],o=0;o<p.length;o++)heap[p[o]]=n(p[o])};
+    heap.load("2087469965");
+    </script>
+</head>
+
+<body data-senna data-senna-surface>
+  <div class="senna-loading-bar"></div>
+
+  <header class="site-header ">
+    <a href="/" class="logo">RB</a>
+  
+    <nav class="site-nav">
+      <ul>
+        <!-- <li><a href="/articles/">Articles</a></li> -->
+        <li><a href="/blogs/">Blogs</a></li>
+        <!-- <li><a href="/talks/">Talks</a></li> -->
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/reminder/">Reminder</a></li>
+        <li><a href="/about/">About</a></li>
+      </ul>
+    </nav>
+  
+    <div class="nav-social">
+      <a href="https://twitter.com/rajasbhagatkar" target="_blank" title="Twitter">
+        <img src="/images/icon-twitter.svg" alt="Twitter">
+      </a>
+      <a href="https://instagram.com/rajasbhagatkar" target="_blank" title="Instagram">
+        <img src="/images/icon-instagram.svg" alt="Instagram">
+      </a>
+      <a href="https://github.com/rajasbhagatkar" target="_blank" title="GitHub">
+        <img src="/images/icon-github.svg" alt="GitHub">
+      </a>
+    </div>
+  </header>
+  <main class="post">
+    <header class="post-header">
+      <h1 class="post-title">Whats New in Next.js 13.5</h1>
+      <div class="post-image" style="background-image: url(/img/blog/newInNextJS13/nextjs13.webp)"></div>
+      <h2 class="post-subtitle">Oct 21, 2023</h2>
+    </header>
+    <div class="post-content post-article">
+      <div class="post-container">
+
+        <h2 id="tldr-">TLDR ✂️</h2>
+<p>Next.js 13.5 is here! 🎊 It&#39;s the latest version of Next.js. In this article, we&#39;ll learn about:</p>
+<ul>
+<li>The Next.js framework 🏗</li>
+<li>The Key features of Next.js 🔑</li>
+<li>What&#39;s new in Next.js version 13.5 🆕</li>
+</ul>
+<h2 id="what-is-next-js-">What is Next.js?</h2>
+<p>Next.js is React-based production-level framework used for building full-stack React Applications. It has over <a href="https://nextjs.org/docs/community">4 million weekly downloads.</a> Next.js is an open source project by Vercel team that was released on October 25, 2016. Its latest verison is 13.5.1. Over the years, Next.js has gained a huge level of popularity in React ecosystem and is the first love for React developer. ⚛</p>
+<p>As the project is open source, it is growing rapidly with 113k stars, 25k forks, 1.4k watches, 1.8 million used, and 2937 contributors on <a href="https://github.com/vercel/next.js">Next.js Github.</a></p>
+<p>Some top tech giants using Next.js are Meta, Uber, Auth0, and many more. 💎</p>
+<h2 id="key-features-making-next-js-a-full-stack-framework">Key features making Next.js a full-stack framework</h2>
+<ul>
+<li><p>Built-in optimization for images, fonts, layout scripts, application scripts, static, dynamic, and file-based metadata, static assets, lazy loading 🦥, speed analytics ✈, web vitals 📊, etc.</p>
+</li>
+<li><p>Middlewares in Next.js help in executing chunks of code before a request is fulfilled. In Next.js you can use simple <a href="https://nextjs.org/docs/app/building-your-application/routing/middleware">middlewares</a>, path middlewares using <a href="https://nextjs.org/docs/app/building-your-application/routing/middleware#matcher">matcher config</a>, and conditional statement. Using the <a href="https://nextjs.org/docs/app/api-reference/file-conventions/route#nextresponse">NextResponse API</a>, you can redirect and rewrite URLs, request headers from client, set responses cookies and headers, and also set up <a href="https://nextjs.org/docs/app/building-your-application/routing/middleware#advanced-middleware-flags">advanced middleware flags</a> using Next.js ⚙.</p>
+</li>
+<li><p>Client and server-side rendering in Next.js allows you to render the UI in both the client and the server using client and server components  <img alt="server-Image" src="/img/blog/newInNextJS13/image.png" style="min-width: auto; max-width: auto; width: 22px;" />.</p>
+</li>
+<li><p>CSS support for styling your Next.js application using global CSS, CSS modules, SASS, Tailwing CSS, and CSS within JS  🎨.</p>
+</li>
+<li><p>Adavanced routing and nested layouts in Next.js allow you to define advanced routing and nested layouts using file system <img alt="layout Image" src="/img/blog/newInNextJS13/image-1.png" style="min-width: auto; max-width: auto; width: 22px;" />.</p>
+</li>
+<li><p>Node.js &amp; Edge Runting in Next.js allows you to build fast ans scalable web applications using serverless function 🚀. This helps in shipping dynamic and personalized content for the users 🎯.</p>
+</li>
+<li><p>Data fetching in Next.js helps execute asynchoronus fetch functions in both the client and server, handling form submissions and data mutations.</p>
+</li>
+</ul>
+<h2 id="what-s-new-in-next-13-5">What&#39;s new in Next 13.5</h2>
+<p>if everything stated above is true then what&#39;s new in 13.5??</p>
+<ul>
+<li>22% faster local server startup 🤯.</li>
+<li>29% faster HMR (Fast Refresh) ♻.</li>
+<li>40% less memory usage 🧠.</li>
+<li>Optimized expensive file system operations 📁.</li>
+<li>Auto Configuration for Larger Icon Libraries 🤖.</li>
+<li>Optimzed package Imports 🗳.</li>
+<li>next/image Improvements 🖼.</li>
+<li>Improved documentation for forms and mutations, Client and Server components, Content Security Policy and Nonces, Caching and Revalidating.</li>
+<li>useParams and useSearchParams can now be used in the Page Router 🗺.</li>
+</ul>
+<p>I&#39;m going to assume I&#39;m talking to software engineers, If you like my blog and found it helpful, make sure to make a comment, and share it with your friends.</p>
+<p><img alt="layout Image" src="/img/blog/newInNextJS13/funny_cat.gif" style="min-width: auto; display: flex; margin: auto;" />.</p>
+<h3 id="reference-links">Reference Links</h3>
+<p><a href="https://kumarkalyan.medium.com/whats-new-in-next-js-13-5-6621623a451a" rel="nofollow" target="__blank">@kumarkalyan</a></br>
+<a href="https://nextjs.org/">NextJs Docs</a></p>
+
+      </div>
+    </div>
+  </main>
+
+
+
+</body>
+</html>
