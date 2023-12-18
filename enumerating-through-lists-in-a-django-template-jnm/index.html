@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en-In">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Enumerating Through Lists in a Django Template // Rajas Bhagatkar</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:site_name" content="Rajas Bhagatkar">
+  <!-- <meta name="description" content="Rajas Bhagatkar - Home" /> -->
+  <!-- <meta name="description" content="About · Blogs · Projects · Reminder · About. Rajas Bhagatkar · Full Stack Nodejs Developer at Golden Leaf Digital a Digital Marketing Company | (MongoDB, SQL, Express, ReactJs, Node, Java, Spring Boot) · Currently working on Plot Market a land-selling platform that aims to provide detailed information about different land projects around India and connect the normal person to developer/seller without any broker." /> -->
+
+  <!-- <meta name="keywords" content="Rajas Bhagatkar" /> -->
+  <meta name="author" content="Rajas Bhagatkar" />
+  <!-- <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="alternate icon" href="/favicon.ico"> -->
+  <link rel="icon" href="/Favicon.png" type="image/x-icon" />
+  <!-- <link rel="alternate icon" href="/alternateFavicon.png" type="image/x-icon" /> -->
+
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/highlight.css">
+  <link rel="stylesheet" href="/css/senna.css">
+
+
+  <script src="/js/senna.min.js"></script>
+  <script src="/js/headroom.min.js"></script>
+  <script src="/js/main.js"></script>
+  <meta name="google-site-verification" content="jdq_teez2KZvQ5jUvxRw-ok8eBeD9cIgI7JMfaVY258" />
+  <!-- Inspectlet -->
+
+  <!-- Google Analytics -->
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-P8NEDYNNEC"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-P8NEDYNNEC');
+  </script>
+
+  <!-- is.dev analytics -->
+  <script defer data-domain="rajasbhagatkar.is-a.dev"
+  src="https://analytics.is-a.dev/js/script.js"></script>
+
+  <!-- Heap analytics useage-->
+  <script type="text/javascript">
+    window.heap=window.heap||[],heap.load=function(e,t){window.heap.appid=e,window.heap.config=t=t||{};var r=document.createElement("script");r.type="text/javascript",r.async=!0,r.src="https://cdn.heapanalytics.com/js/heap-"+e+".js";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(r,a);for(var n=function(e){return function(){heap.push([e].concat(Array.prototype.slice.call(arguments,0)))}},p=["addEventProperties","addUserProperties","clearEventProperties","identify","resetIdentity","removeEventProperty","setEventProperties","track","unsetEventProperty"],o=0;o<p.length;o++)heap[p[o]]=n(p[o])};
+    heap.load("2087469965");
+    </script>
+</head>
+
+<body data-senna data-senna-surface>
+  <div class="senna-loading-bar"></div>
+
+  <header class="site-header site-header-white">
+    <a href="/" class="logo">RB</a>
+  
+    <nav class="site-nav">
+      <ul>
+        <!-- <li><a href="/articles/">Articles</a></li> -->
+        <li><a href="/blogs/">Blogs</a></li>
+        <!-- <li><a href="/talks/">Talks</a></li> -->
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/reminder/">Reminder</a></li>
+        <li><a href="/about/">About</a></li>
+      </ul>
+    </nav>
+  
+    <div class="nav-social">
+      <a href="https://twitter.com/rajasbhagatkar" target="_blank" title="Twitter">
+        <img src="/images/icon-twitter.svg" alt="Twitter">
+      </a>
+      <a href="https://instagram.com/rajasbhagatkar" target="_blank" title="Instagram">
+        <img src="/images/icon-instagram.svg" alt="Instagram">
+      </a>
+      <a href="https://github.com/rajasbhagatkar" target="_blank" title="GitHub">
+        <img src="/images/icon-github.svg" alt="GitHub">
+      </a>
+    </div>
+  </header>
+  <main class="post">
+    <div class="post-content post-article">
+      <div class="post-container">
+          <h1 class="post-title">Enumerating Through Lists in a Django Template</h1>
+          <h2 class="post-subtitle">Dec 18, 2023</h2>
+
+        <h2 id="environment">Environment</h2>
+<p>python 3.9.5<br>django4 4.2.8</p>
+<hr>
+<hr>
+<p>I recently started learning django for my new project, through a awesome youtube video by free code camp on django which convers the basic to advance topics on django and it&#39;s template engine. while going through I had problem where I had to enumerate a list passed from the view to the template. You can use these methods below.</p>
+<pre><code class="hljs python"><span class="hljs-comment"># view.py</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">product_list_all</span><span class="hljs-params">(request)</span>:</span>
+    queryset = [
+                {title: <span class="hljs-string">"Product 1"</span>},
+                {title: <span class="hljs-string">"Product 1"</span>},
+                {title: <span class="hljs-string">"Product 1"</span>}
+            ]
+    context = {
+        <span class="hljs-string">"products"</span>: queryset
+    }
+    <span class="hljs-keyword">return</span> render(request, <span class="hljs-string">"product_list.html"</span>,context)</code></pre>
+
+<p>these function handles the request on the <em><code>products/all</code></em> for <strong>GET</strong> request handled by url.py in the root project. Your&#39;s url.py file should look something to this, at lease it would have the the route as same as <em>list_all_products_in_db</em></p>
+<pre><code class="hljs python"><span class="hljs-comment"># urls.py</span>
+<span class="hljs-keyword">from</span> django.contrib <span class="hljs-keyword">import</span> admin;
+<span class="hljs-keyword">from</span> django.urls <span class="hljs-keyword">import</span> path;
+
+urlpatterns = [
+    path(<span class="hljs-string">'admin/'</span>, admin.site.urls),
+
+    path(<span class="hljs-string">"products/list/"</span>, product_list_all, name=<span class="hljs-string">"list_all_products_in_db"</span>)
+]</code></pre>
+
+<p>to enumerate through a list passed from the view to the template. You can use these methods below</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">variable</th>
+<th style="text-align:left">defination</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>forloop.counter</code></td>
+<td style="text-align:left">enumerating index starting from 1</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>forloop.counter0</code></td>
+<td style="text-align:left">enumerating index starting from 0</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>forloop.revcounter</code></td>
+<td style="text-align:left">enumerating index starting from the tail</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>forloop.revcounter0</code></td>
+<td style="text-align:left">enumerating index starting from 0</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>forloop.first</code></td>
+<td style="text-align:left">true when index is at 0</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>forloop.last</code></td>
+<td style="text-align:left">true when index is at tail</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>forloop.parentloop</code></td>
+<td style="text-align:left">enumerates through the parent loop</td>
+</tr>
+</tbody>
+</table>
+<p>An example of the <code>forloop.counter</code> will be:</p>
+<pre><code class="hljs python">{% <span class="hljs-keyword">for</span> product <span class="hljs-keyword">in</span> products %}
+   {{ forloop.counter }} : {{ product.title }}
+{% endfor %}</code></pre>
+Output:
+<pre><code class="hljs"><span class="hljs-number">1</span>: Product <span class="hljs-number">1</span>
+<span class="hljs-number">2</span>: Product <span class="hljs-number">2</span>
+<span class="hljs-number">3</span>: Product <span class="hljs-number">3</span></code></pre>
+
+<p>For <code>forloop.counter0</code> it will be:</p>
+<pre><code class="hljs python">{% <span class="hljs-keyword">for</span> product <span class="hljs-keyword">in</span> products %}
+    {{ forloop.counter0 }} : {{ product.title }}
+{% endfor %}</code></pre>
+
+<pre><code class="hljs"><span class="hljs-number">0</span>: Product <span class="hljs-number">1</span>
+<span class="hljs-number">1</span>: Product <span class="hljs-number">2</span>
+<span class="hljs-number">2</span>: Product <span class="hljs-number">3</span></code></pre>
+
+<p>As for the length of a list, <code>products|length</code> can be used.</p>
+<pre><code class="hljs html">{{ products | length }}</code></pre>
+<pre><code class="hljs"><span class="hljs-number">3</span></code></pre>
+      </div>
+    </div>
+  </main>
+
+
+<script src="/js/hook.js"></script>
+
+</body>
+</html>
